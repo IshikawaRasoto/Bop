@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp85otc1yffqr"]
+
+[ext_resource type="Script" path="res://bolha.gd" id="1_frq87"]
+[ext_resource type="Texture2D" uid="uid://c71783yhu4aub" path="res://sprites/bolha.png" id="1_s8k1r"]
+[ext_resource type="AudioStream" uid="uid://neuce2wh83lk" path="res://audio/pop.mp3" id="3_17gtw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkhxh"]
+radius = 55.0091
+
+[node name="Bubble" type="CharacterBody2D" node_paths=PackedStringArray("audio_stream_player")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_frq87")
+audio_stream_player = NodePath("AudioStreamPlayer")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Collision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mkhxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("1_s8k1r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="AudioStreamPlayer"]
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("3_17gtw")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

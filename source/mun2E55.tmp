@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbcgwnt436why"]
+
+[ext_resource type="PackedScene" uid="uid://dp85otc1yffqr" path="res://bolha.tscn" id="1_csg18"]
+[ext_resource type="Texture2D" uid="uid://uk5hvs13y8tg" path="res://sprites/spriteSheet256.png" id="2_ptqyh"]
+
+[node name="mundo" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_csg18")]
+position = Vector2(412, 235)
+
+[node name="SpriteSheet256" type="Sprite2D" parent="."]
+position = Vector2(412, 245.5)
+scale = Vector2(4.46094, 2.57422)
+texture = ExtResource("2_ptqyh")
